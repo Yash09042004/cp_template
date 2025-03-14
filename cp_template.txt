@@ -1,0 +1,132 @@
+//------------macros----------------//
+#include<bits/stdc++.h>
+using namespace std;
+#define fastio() ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+#define MOD 1000000007
+#define MOD1 998244353
+#define INF 1e18
+#define nline "\n"
+#define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define ff first
+#define ss second
+#define PI 3.141592653589793238462
+#define set_bits __builtin_popcountll
+#define sz(x) ((int)(x).size())
+#define all(x) (x).begin(), (x).end()
+#define ll long long
+//------------debug----------------//
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr << #x <<" "; _print(x); cerr << endl;
+template <class T, class V> void _print(pair<T, V> p);
+template <class T> void _print(vector<T> v);
+template <class T> void _print(set<T> v);
+template <class T, class V> void _print(map<T, V> v);
+template <class T> void _print(multiset<T> v);
+void _print(int t) {cerr << t;}
+void _print(long long t) {cerr << t;}
+void _print(string t) {cerr << t;}
+void _print(char t) {cerr << t;}
+void _print(double t) {cerr << t;}
+template<class T, class V> void _print(pair<T, V> p) {cerr << "{"; _print(p.ff); cerr << ","; _print(p.ss); cerr << "}";}
+template<class T> void _print(vector<T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
+template<class T> void _print(set<T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
+template<class T> void _print(multiset<T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
+template<class T, class V> void _print(map<T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
+#endif
+//------------KMP Algorithm----------------//
+vector<int> kmp(string &s) {
+    vector<int> lps(s.size(), 0);
+    for (int i = 1; i < lps.size(); i++) {
+        int prev_idx = lps[i - 1];
+        while (prev_idx > 0 && s[i] != s[prev_idx]) {
+            prev_idx = lps[prev_idx - 1];
+        }
+        lps[i] = prev_idx + (s[i] == s[prev_idx]);
+    }
+    return lps;
+}
+bool iskmpok(string &str, string &p) {
+    int n = str.size();
+    int m = p.size();
+    string s = p + "#" + str;
+    vector<int> lps = kmp(s);
+    for (int i = m + 1; i < lps.size(); i++) {
+        if (lps[i] == m) {
+            return true;
+        }
+    }
+    return false;
+}
+//------------modular arith---------------------//
+template<class T> T mod_add(T a, T b, T m) {return ((a % m + b % m) % m + m) % m;}
+template<class T> T mod_sub(T a, T b, T m) {return ((a % m - b % m) % m + m) % m;}
+template<class T> T mod_mul(T a, T b, T m) {return ((a % m * b % m) % m + m) % m;}
+template<class T> T mod_pow(T a, T b, T m) {T ans = 1; while (b) {if (b & 1) ans = mod_mul(ans, a, m); a = mod_mul(a, a, m); b /= 2;} return ans;}
+template<class T> T gcd(T a, T b) {return b == 0 ? a : gcd(b, a % b);}
+template<class T> T lcm(T a, T b) {return (a / gcd(a, b)) * b;}
+template<class T> T mod_inv(T a, T m) { return mod_pow(a, m - 2, m); }
+template<class T> T mod_div(T a, T b, T m) { return mod_mul(a, mod_inv(b, m), m); }
+//------------math utilities---------------------//
+template<class T> bool isPrime(T n) {if (n <= 1) return false; for (T i = 2; i * i <= n; i++) if (n % i == 0) return false; return true;}
+template<class T> T ceil(T a, T b) {return (a + b - 1) / b;}
+//------------sieve-----------------------------//
+vector<bool> prime(1e6+5, true);
+void sieve() {prime[0] = prime[1] = false; for (int i = 2; i * i <= 1e6+5; i++) {if (prime[i]) {for (int j = i * i; j <= 1e6+5; j += i) {prime[j] = false;}}}}
+vector<long long> spf(1e6+5);
+void spfsieve() {for (int i = 2; i < 1e6+5; i++) {if (!spf[i]) {spf[i] = i; for (long long j = 1LL * i * i; j < 1e6+5; j += i) if (!spf[j]) spf[j] = i;}}}
+//------------io utilities---------------------//
+template<typename T>
+istream& operator>>(istream &istream, vector<T> &v) {
+    for (auto &it : v) cin >> it;
+    return istream;
+}
+
+template<typename T>
+ostream& operator<<(ostream &ostream, const vector<T> &v) {
+    for (const auto &it : v) cout << it << " ";
+    return ostream;
+}
+
+template<typename T, typename V>
+ostream& operator<<(ostream &ostream, const map<T, V> &m) {
+    for (const auto &it : m) cout << it.first << " " << it.second << endl;
+    return ostream;
+}
+
+template<typename T, typename V>
+ostream& operator<<(ostream &ostream, const vector<pair<T, V>> &v) {
+    for (const auto &it : v) cout << it.first << " " << it.second << endl;
+    return ostream;
+}
+//------------main function------------------------------------------------------------------------------------------//
+
+void solve() {
+    
+
+
+
+
+
+
+
+}
+
+
+
+int main() {
+    fastio();
+    #ifndef ONLINE_JUDGE
+       // freopen("input.txt", "r", stdin);
+       // freopen("output.txt", "w", stdout);
+       // freopen("debug.txt", "w", stderr);
+    #endif
+  int t = 1;
+  cin >> t;
+  while (t--){
+  solve();
+
+}
+return 0;
+}
